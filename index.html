@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Drive</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .file-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .file-list li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .file-list li:last-child {
+            border-bottom: none;
+        }
+        .file-list li a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+        .file-list li a:hover {
+            text-decoration: underline;
+        }
+        .upload-form {
+            margin-top: 20px;
+        }
+        .upload-form input[type="file"] {
+            margin-right: 10px;
+        }
+        .upload-form input[type="submit"] {
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+        .upload-form input[type="submit"]:hover {
+            background-color: #3c78dc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meine Drive</h1>
+    </header>
+    <div class="container">
+        <ul class="file-list">
+            <li><a href="#">Datei1.txt</a></li>
+            <li><a href="#">Bild.jpg</a></li>
+            <!-- Weitere Dateien hier auflisten -->
+        </ul>
+        <form class="upload-form" action="#" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file">
+            <input type="submit" value="Hochladen">
+        </form>
+    </div>
+</body>
+</html>
