@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Dateiablage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #3c78dc;
+        }
+        .file-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .file-list li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .file-list li:last-child {
+            border-bottom: none;
+        }
+        .file-list li a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+        .file-list li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meine Dateiablage</h1>
+    </header>
+    <div class="container" id="loginContainer">
+        <h2>Anmelden</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Anmelden">
+            </div>
+        </form>
+    </div>
+    <div class="container hidden" id="fileContainer">
+        <h2>Dateien</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Datei auswählen:</label>
+                <input type="file" id="file" name="file" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Hochladen">
+            </div>
+        </form>
+        <ul class="file-list" id="fileList">
+            <!-- Dateien werden hier dynamisch eingefügt -->
+        </ul>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Verhindert das Absenden des Formulars
+
+            // Hier sollte die Authentifizierungslogik erfolgen.
+            // Dies ist eine sehr einfache Simulation:
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Hier prüfen wir einfach nur, ob eine E-Mail-Adresse und ein Passwort eingegeben wurden
+            // In einer echten Anwendung müsste dies gegen eine Datenbank oder eine andere Authentifizierungsquelle überprüft werden.
+            if (email && password) {
+                // Wenn ein Benutzer angemeldet ist, zeigen wir die Dateien an und verstecken das Anmeldeformular
+                document.getElementById("loginContainer").classList.add("hidden");
+                document.getElementById("fileContainer").classList.remove("hidden");
+                loadFiles(); // Lädt die Dateien des Benutzers
+            } else {
+                alert("Bitte geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein.");
+            }
+        });
+
+        document.getElementById("uploadForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Verhindert das Absenden des Formulars
+
+            // Hier sollte der Upload-Code stehen.
+            // In einer echten Anwendung müsste hier eine Anfrage an den Server gesendet werden, um die Datei hochzuladen.
+            alert("Datei hochgeladen!"); // Hier zeigen wir nur eine einfache Meldung an.
+        });
+
+        function loadFiles() {
+            // Hier können Sie die Dateien des Benutzers dynamisch laden und anzeigen.
+            // Dies ist eine einfache Simulation:
+            var fileList = [
+                "Datei1.txt",
+                "Bild.jpg",
+                "Dokument.docx"
+            ];
+
+            var fileListElement = document.getElementById("fileList");
+            fileListElement.innerHTML = ""; // Leert die vorhandene Liste
+
+            fileList.forEach(function(file) {
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                a.href = "#"; // Hier sollte der Link zum tatsächlichen Dateipfad führen
+                a.textContent = file;
+                li.appendChild(a);
+                fileListElement.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
